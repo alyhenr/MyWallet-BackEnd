@@ -1,0 +1,38 @@
+{
+  "name": "mywallet-backend",
+  "version": "1.0.0",
+  "description": "Back-end - Full Stack project: MyWallet",
+  "main": "app.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node ./src/app.js",
+    "dev": "nodemon src/app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alyhenr/MyWallet-BackEnd.git"
+  },
+  "keywords": [
+    "backend",
+    "node.js",
+    "express",
+    "mongodb"
+  ],
+  "author": "Alysson Henrique",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/alyhenr/MyWallet-BackEnd/issues"
+  },
+  "homepage": "https://github.com/alyhenr/MyWallet-BackEnd#readme",
+  "dependencies": {
+    "bcrypt": "^5.1.0",
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2",
+    "joi": "^17.9.2",
+    "mongodb": "^5.7.0",
+    "nodemon": "^2.0.22",
+    "string-strip-html": "^13.4.1",
+    "uuid": "^9.0.0"
+  }
+}
