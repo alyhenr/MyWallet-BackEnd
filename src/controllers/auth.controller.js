@@ -4,6 +4,7 @@ import db from '../db.js';
 
 const userColl = db.collection("users");
 const sessionsColl = db.collection("sessions");
+const walletsColl = db.collection("wallets");
 
 // "/cadastro"
 export const signUp = async (req, res) => {
@@ -16,6 +17,10 @@ export const signUp = async (req, res) => {
         };
 
         await userColl.insertOne(newUser);
+        await walletsColl.insertOne({
+            userId: newUser._id,
+            total: 0,
+        })
         res.status(201).send(newUser);
     } catch (error) {
         res.status(500).send(error.message);
@@ -31,7 +36,7 @@ export const signIn = async (req, res) => {
 
         if (bcrypt.compareSync(senha, user.senha)) {
             const token = uuid();
-            sessionsColl.insertOne({ id: user._id, token });
+            sessionsColl.insertOne({ userId: user._id, token });
             return res.status(200).send({ token });
         } else {
             return res.status(401).send("Senha incorreta");
