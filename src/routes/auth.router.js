@@ -5,9 +5,8 @@ import validateAuth from "../middlewares/validateAuth.js";
 import authSchema from "../schemas/auth.schema.js";
 
 const authRouter = Router();
-authRouter.use(validateAuth(authSchema));
 
-authRouter.post("/cadastro", signUp);
-authRouter.post("/", signIn);
+authRouter.post("/cadastro", validateAuth(authSchema), signUp);
+authRouter.post("/", validateAuth(authSchema), signIn);
 
 export default authRouter;
