@@ -37,7 +37,7 @@ export const signIn = async (req, res) => {
         if (bcrypt.compareSync(senha, user.senha)) {
             const token = uuid();
             sessionsColl.insertOne({ userId: user._id, token });
-            return res.status(200).send({ token });
+            return res.status(200).send({ token, nome: user.nome });
         } else {
             return res.status(401).send("Senha incorreta");
         }

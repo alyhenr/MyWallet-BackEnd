@@ -1,3 +1,5 @@
+import dayjs from "dayjs";
+
 import db from '../db.js';
 
 const transactionsColl = db.collection("transactions");
@@ -20,6 +22,7 @@ export default async (req, res) => {
                     userId: userInfo.user.userId,
                     value,
                     description,
+                    date: dayjs().format("DD/MM"),
                 });
                 await walletsColl.updateOne({
                     userId: userInfo.user.userId
@@ -35,6 +38,7 @@ export default async (req, res) => {
                     userId: userInfo.user.userId,
                     value,
                     description,
+                    date: dayjs().format("DD/MM"),
                 });
                 await walletsColl.updateOne({
                     userId: userInfo.user.userId
@@ -47,6 +51,6 @@ export default async (req, res) => {
                 break;
         }
     } catch (error) {
-        res.status(500).send(error);
+        res.status(500).send(error.message);
     }
 };

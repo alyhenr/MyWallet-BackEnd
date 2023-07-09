@@ -9,6 +9,7 @@ export default function validateTransaction(transactionSchema) {
         if (!token) return res.sendStatus(401);
 
         const { value, description } = req.body;
+
         if (Number(value) !== parseFloat(value)) return res.status(422).send("O valor deve ser do tipo flutuante (float)");
 
         const validation = transactionSchema({ value, description });
