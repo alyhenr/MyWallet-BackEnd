@@ -32,7 +32,7 @@ export const signIn = async (req, res) => {
     const { email, senha } = req.body;
     try {
         const user = await userColl.findOne({ email });
-        if (!email) return res.status(404).send("Email não cadastrado.")
+        if (!user) return res.status(404).send("Email não cadastrado.")
 
         if (bcrypt.compareSync(senha, user.senha)) {
             const token = uuid();

@@ -10,7 +10,7 @@ export default async (_, res) => {
         if (!user) return res.sendStatus(401);
         const transactions = await transactionsColl.find({
             userId: user.userId,
-        }).toArray();
+        }).sort({ $natural: -1 }).toArray();
         const userWallet = await walletsColl.findOne({ userId: user.userId });
         res.status(200).send({
             transactions,
