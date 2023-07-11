@@ -6,7 +6,7 @@ import authSchema from "../schemas/auth.schema.js";
 
 const authRouter = Router();
 
-authRouter.post("/cadastro", validateAuth(authSchema), signUp);
-authRouter.post("/", validateAuth(authSchema), signIn);
+authRouter.post("/", validateAuth(authSchema, "login"), signIn);
+authRouter.post("/cadastro", validateAuth(authSchema, "cadastro"), signUp);
 
 export default authRouter;
